@@ -1,7 +1,0 @@
-C:\Users\Asus\Desktop\Defends\lab1_1\lab1\obj\Debug\lab1.csprojAssemblyReference.cache
-C:\Users\Asus\Desktop\Defends\lab1_1\lab1\obj\Debug\lab1.csproj.CoreCompileInputs.cache
-C:\Users\Asus\Desktop\Defends\lab1_1\lab1\bin\Debug\lab1.exe.config
-C:\Users\Asus\Desktop\Defends\lab1_1\lab1\bin\Debug\lab1.exe
-C:\Users\Asus\Desktop\Defends\lab1_1\lab1\bin\Debug\lab1.pdb
-C:\Users\Asus\Desktop\Defends\lab1_1\lab1\obj\Debug\lab1.exe
-C:\Users\Asus\Desktop\Defends\lab1_1\lab1\obj\Debug\lab1.pdb
