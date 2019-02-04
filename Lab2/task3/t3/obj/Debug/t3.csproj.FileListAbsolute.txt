@@ -1,0 +1,7 @@
+C:\Users\Asus\Desktop\Defends\Lab2\task3\t3\obj\Debug\t3.csprojAssemblyReference.cache
+C:\Users\Asus\Desktop\Defends\Lab2\task3\t3\obj\Debug\t3.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Desktop\Defends\Lab2\task3\t3\bin\Debug\t3.exe.config
+C:\Users\Asus\Desktop\Defends\Lab2\task3\t3\bin\Debug\t3.exe
+C:\Users\Asus\Desktop\Defends\Lab2\task3\t3\bin\Debug\t3.pdb
+C:\Users\Asus\Desktop\Defends\Lab2\task3\t3\obj\Debug\t3.exe
+C:\Users\Asus\Desktop\Defends\Lab2\task3\t3\obj\Debug\t3.pdb
