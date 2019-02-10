@@ -34,52 +34,37 @@ namespace Task
                     {
                         selectedItem = value;
                     }
-
                 }
             }
             public List<FileSystemInfo> Content
             {
                 get;
-
                 set;
-                
             }
             public void Draw()
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Clear();
-                
-
-                    for (int i = 0; i < Content.Count; i++)
-                    {
+                for (int i = 0; i < Content.Count; i++)
+                {
                         if (selectedItem == i)
                         {
                             Console.BackgroundColor = ConsoleColor.Blue;
                             if(Content[i].GetType() == typeof(FileInfo))
-                            {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                        }
-                        else 
-                        {
+                            Console.ForegroundColor = ConsoleColor.Red;                            
+                            else 
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-
-                    }
                         else
                         {
                             Console.BackgroundColor = ConsoleColor.Black;
-                            if (Content[i].GetType() == typeof(FileInfo))
-                            {
+                            if (Content[i].GetType() == typeof(FileInfo))                            
                             Console.ForegroundColor = ConsoleColor.Red;
-                            }
-                        else
-                        {
+                            else
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                    }
                     Console.WriteLine((i+1)+") "+Content[i].Name);
                 }
-                
             }
             public void Delete()
             {
@@ -88,7 +73,6 @@ namespace Task
                     File.Delete(Content[selectedItem].FullName);
                     Console.Clear();
                     Content.RemoveAt(selectedItem);
-                   // Draw();
                     selectedItem--;
                 }
                 else
@@ -99,7 +83,6 @@ namespace Task
                         Content.RemoveAt(selectedItem);
                         selectedItem--;
                     }
-                    
                 }
             }
             public void Rename()
@@ -110,12 +93,7 @@ namespace Task
                     string name = Console.ReadLine();
                     File.Move(Content[selectedItem].FullName, Path.GetDirectoryName(Content[selectedItem].FullName) + "//" +name);
                     Console.Clear();
-
-                    //Content.RemoveAt(selectedItem);
-                    
                     selectedItem--;
-                    
-                    //File.Create(Content[selectedItem].)
                 }
                 else
                 {
@@ -143,45 +121,39 @@ namespace Task
             {
                 if(mode == FARMode.DIR)
                     sl.Peek().Draw();
-                
-                
-
                 ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
                 switch (consoleKeyInfo.Key)
                 {
                     case ConsoleKey.DownArrow:
                         sl.Peek().SelectedItem++;
                         break;
-
                     case ConsoleKey.UpArrow:
                         sl.Peek().SelectedItem--;
                         break;
-
                     case ConsoleKey.Enter:
                         if (sl.Peek().Content.Count != 0)
                         {
                             FileSystemInfo fsi = sl.Peek().Content[sl.Peek().SelectedItem];
-                        if(fsi.GetType() == typeof(DirectoryInfo))
-                        {
-                            DirectoryInfo dir2 = dir =fsi as DirectoryInfo;
-                            sl.Push(new Layer
-                            { Content = dir2.GetFileSystemInfos().ToList(),
+                            if(fsi.GetType() == typeof(DirectoryInfo))
+                            {
+                                DirectoryInfo dir2 = dir =fsi as DirectoryInfo;
+                                sl.Push(new Layer
+                                { Content = dir2.GetFileSystemInfos().ToList(),
                                 selectedItem = 0
-                            });
+                                });
+                            }
+                            else
+                            {
+                                mode = FARMode.FILE;
+                                Console.BackgroundColor = ConsoleColor.White;
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                FileInfo dir2 = fsi as FileInfo;
+                                StreamReader sr = new StreamReader(fsi.FullName);
+                                Console.WriteLine(sr.ReadToEnd());
+                                sr.Close();
+                            }
                         }
-                        else
-                        {
-                            mode = FARMode.FILE;
-                            Console.BackgroundColor = ConsoleColor.White;
-                            Console.Clear();
-                            Console.ForegroundColor = ConsoleColor.Black;
-                            FileInfo dir2 = fsi as FileInfo;
-                            StreamReader sr = new StreamReader(fsi.FullName);
-                            Console.WriteLine(sr.ReadToEnd());
-                            sr.Close();
-                        }
-                        }
-                        
                         break;
                     case ConsoleKey.Backspace:
                         if (mode == FARMode.DIR)
@@ -192,7 +164,6 @@ namespace Task
                         }
                         else
                         {
-
                             Console.ForegroundColor = ConsoleColor.White;
                             mode = FARMode.DIR;
                         }
@@ -205,19 +176,14 @@ namespace Task
                         if (mode == FARMode.DIR)
                         {
                             sl.Peek().Draw();
-                            
                             sl.Peek().Rename();
                             sl.Peek().Content = dir.GetFileSystemInfos().ToList();
-                            
                         }
                         break;
                     default:
                         break;
                 }
             }
-        
-        
-
         }
     }
 }
